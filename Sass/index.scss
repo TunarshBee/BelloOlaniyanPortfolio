@@ -1,0 +1,136 @@
+// imported partial for colors only
+
+@use './Sass-Partials/light-mode-config';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Nunito', sans-serif;
+}
+.mont-font {
+  font-family: 'Montserrat', sans-serif;
+}
+.mt-20 {
+  margin-top: 20px;
+}
+.modes-display {
+  width: 100%;
+  min-height: 100vh;
+  padding: 0;
+  display: flex;
+  .light-side {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    .light-case {
+      position: absolute;
+      transform: translateX(-700px);
+    }
+    .light-case-slide-in {
+      transform: translateX(0);
+      transition: transform 1.75s ease;
+    }
+    .pseudo-nav {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      .brand-name {
+        font-size: 25px;
+      }
+    }
+    .mode-name {
+      color: var(--color-b);
+    }
+  }
+  .dark-side {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-b);
+    position: relative;
+    overflow: hidden;
+    .dark-case {
+      position: absolute;
+      transform: translateX(700px);
+    }
+    .dark-case-slide-in {
+      transform: translateX(0);
+      transition: transform 1.75s ease;
+    }
+    .mode-name {
+      color: var(--color-e);
+    }
+  }
+  a {
+    margin: 0 auto;
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    &:hover {
+      img {
+        transform: scale(1.05);
+        transition: transform 0.75s ease;
+      }
+    }
+    .image-case {
+      min-width: 420px;
+      min-height: 200px;
+      padding: 13px;
+      font-size: 20px;
+      img {
+        width: 420px;
+        box-shadow: 0 0 10px 2px rgb(129, 116, 116);
+      }
+    }
+  }
+}
+
+//media queries
+
+@media screen and (max-width: 1050px) {
+  .modes-display {
+    flex-direction: column;
+    .dark-side {
+      width: 100%;
+      min-height: 50vh;
+    }
+    .light-side {
+      width: 100%;
+      min-height: 50vh;
+      padding: 100px 0 30px;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .modes-display {
+    a {
+      .image-case {
+        min-width: 100%;
+        padding: 15px;
+        img {
+          width: 100%;
+        }
+      }
+    }
+    .light-side {
+      .pseudo-nav {
+        padding: 10px 13px;
+        .brand-name {
+          font-size: 25px;
+        }
+      }
+    }
+  }
+}
